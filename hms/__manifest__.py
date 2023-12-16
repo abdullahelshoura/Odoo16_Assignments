@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Care Hospital",
+    'name': "My First Hospital",
 
     'summary': """
     This Is Hospital Management System Module """,
