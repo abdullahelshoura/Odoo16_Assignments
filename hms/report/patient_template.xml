@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="patient_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="container" style="border:solid 2px black;">
+                        <div class="row">
+                            <div style="text-align:center;padding:2rem;" class="col-6">
+                                <h1 style="color:red;font-size:2rem;font-weight:bold;">Patient Student Report</h1>
+                            </div>
+                            <div class="col-6" style="padding:0.5rem;">
+                                <img t-attf-src="data:image/*;base64,{{o.image}}" class="rounded mx-auto d-block"
+                                     width="100px" height="100px"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6" style="padding-left:2.5rem">
+
+                                <div>
+                                    <strong>Name:</strong>
+                                    <span t-field="o.first_name"/>
+                                </div>
+                                <div>
+                                    <strong>Department:</strong>
+                                    <span t-field="o.dept_id"/>
+                                </div>
+                                <div>
+                                    <strong>Doctors:</strong>
+                                    <span t-field="o.doctors"/>
+                                </div>
+                                <div>
+                                    <strong>Age:</strong>
+                                    <span t-field="o.age"/>
+                                </div>
+                            </div>
+                            <div class="col-6" style="padding-left:2.5rem">
+                                <div>
+                                    <strong>Birth Date:</strong>
+                                    <span t-field="o.bd"/>
+                                </div>
+                                <div>
+                                    <strong>PCR:</strong>
+                                    <span t-field="o.pcr"/>
+                                </div>
+                                <div>
+                                    <strong>Blood Type:</strong>
+                                    <span t-field="o.blood_type"/>
+                                </div>
+                                <div>
+                                    <strong>Email:</strong>
+                                    <strong t-field="o.email"/>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <h1 style="color:red;font-size:1.5rem; font-weight:bold;text-align:center;">Log History</h1>
+                        <table class="table" style="width:80%;margin:auto;margin-bottom:0.5rem;">
+                            <thead>
+                                <tr style="background-color:#1196F1;">
+                                    <th>User</th>
+                                    <th>Date</th>
+                                    <th>Info</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color:#97CDF2;">
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
+                                </tr>
+                                <tr style="background-color:#BDDBF0;">
+
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
+                                </tr>
+                                <tr style="background-color:#E3EEF5">
+                                    <th> </th>
+                                    <td> </td>
+                                    <td> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

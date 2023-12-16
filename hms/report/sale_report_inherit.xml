@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@class='row mt-4 mb-4']" position="before">
+            <strong>Report Customise Testing (IAM HERE)</strong>
+        </xpath>
+
+        <xpath expr="//table[1]/thead/tr/th[@name='th_subtotal']" position="after">
+            <th>Customize Test</th>
+        </xpath>
+
+        <xpath expr="//table[1]/tbody/t/tr/t/td[@name='td_subtotal']" position="after">
+            <th>IAM HERE</th>
+        </xpath>
+
+
+    </template>
+</odoo>

@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+
+        <!--        department Tree View-->
+        <record model="ir.ui.view" id="hms_department_tree_view">
+            <field name="name">HMS Department Tree</field>
+            <field name="model">hms.department</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="capacity"/>
+                    <field name="is_opened"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--        department Form View-->
+        <record model="ir.ui.view" id="hms_department_form_view">
+            <field name="name">HMS Department Form</field>
+            <field name="model">hms.department</field>
+
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="capacity"/>
+                            <field name="is_opened"/>
+                        </group>
+                        <notebook>
+                            <page string="Patients">
+                                <field name="patients_ids">
+                                     <tree>
+                                            <field name="first_name"/>
+                                            <field name="last_name"/>
+                                            <field name="age"/>
+                                     </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Patient View Action -->
+
+        <record model="ir.actions.act_window" id="hms_department_action">
+            <field name="name">Departments List</field>
+            <field name="res_model">hms.department</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+                name="Departments List"
+                id="departments_sub_menu1"
+                parent="department_menu_item"
+                sequence="1"
+                action="hms_department_action"/>
+
+
+    </data>
+</odoo>

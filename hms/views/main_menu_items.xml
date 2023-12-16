@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <!--        Module Menu Item -->
+        <menuitem
+                name="Care Hospital"
+                id="menu_hms_root"
+                web_icon="hms,static/description/icon.png"
+                sequence="1"/>
+
+        <!--        Main Menu Items-->
+        <menuitem
+                name="Patient Affairs"
+                id="patient_menu_item"
+                parent="menu_hms_root"
+                sequence="1"/>
+
+        <menuitem
+                name="Doctors"
+                id="doctor_menu_item"
+                parent="menu_hms_root"
+                sequence="1"
+                groups="hms.group_manager"/>
+
+        <menuitem
+                name="Departments"
+                id="department_menu_item"
+                parent="menu_hms_root"
+                sequence="1"/>
+
+
+    </data>
+</odoo>

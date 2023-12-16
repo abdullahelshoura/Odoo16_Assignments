@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<odoo>
+     <!-- Add website field in tree view -->
+    <record id="view_partners_tree_crm1" model="ir.ui.view">
+        <field name="name">view.res.partner.tree.crm.inherited1</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field eval="1" name="priority"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="website"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Add related_patient_id in form view -->
+    <record id="view_partners_form_crm1" model="ir.ui.view">
+        <field name="name">view.res.partner.form.crm.inherited1</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field eval="1" name="priority"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='misc']" position="inside">
+                    <field name="related_patient_id"/>
+            </xpath>
+
+<!--            Set Tax_Id Field Mandatory-->
+            <xpath expr="//field[@name='vat']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+        </field>
+    </record>
+
+</odoo>

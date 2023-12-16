@@ -1,0 +1,95 @@
+<odoo>
+
+    <!--        Patient Tree View-->
+    <record model="ir.ui.view" id="hms_patient_tree_view">
+        <field name="name">HMS Patient Tree</field>
+        <field name="model">hms.patient</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="bd" optional="hide"/>
+                <field name="history" optional="hide"/>
+                <field name="email"/>
+                <field name="cr_ratio" optional="hide"/>
+                <field name="blood_type" optional="hide"/>
+                <field name="dept_id"/>
+                <field name="pcr" optional="hide"/>
+                <field name="address"/>
+                <field name="age"/>
+                <field name="doctors" widget="many2many_tags" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--        Patient Form View-->
+    <record model="ir.ui.view" id="hms_patient_form_view">
+        <field name="name">HMS Patient Form</field>
+        <field name="model">hms.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                    <button string="Undetermined" class="oe_highlight"
+                            type="object" name="action_undetermined"/>
+
+                    <button string="Good" class="oe_highlight"
+                            type="object" name="action_good"/>
+
+                    <button string="Fair" class="oe_highlight"
+                            type="object" name="action_fair"/>
+
+                    <button string="Serious" class="oe_highlight"
+                            type="object" name="action_serious"/>
+                </header>
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <group>
+                        <group>
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="bd"/>
+                            <field name="email"/>
+                            <field name="doctors" widget="many2many_tags"
+                                   attrs="{'readonly': [('dept_id', '=', False)]}" groups="hms.group_manager"/>
+                            <field name="age"/>
+                            <field name="history" attrs="{'invisible': [('age', '&lt;', 50)]}"/>
+                        </group>
+
+                        <group>
+                            <field name="cr_ratio"/>
+                            <field name="blood_type"/>
+                            <field name="pcr"/>
+                            <field name="dept_id"/>
+                            <field name="dept_capacity"/>
+                            <field name="address"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+
+        </field>
+    </record>
+
+
+    <!-- Patient View Action -->
+
+    <record model="ir.actions.act_window" id="hms_patient_action">
+        <field name="name">Patients List</field>
+        <field name="res_model">hms.patient</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+            name="Patients"
+            id="patient_affairs_sub_menu1"
+            parent="patient_menu_item"
+            sequence="1"
+            action="hms_patient_action"/>
+
+
+</odoo>
